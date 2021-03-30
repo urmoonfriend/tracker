@@ -5,4 +5,9 @@ public class ConsoleOutput implements Output {
     public void println(Object obj) {
         System.out.println(obj);
     }
+
+    @Override
+    public void print(Object object) {
+        System.out.print(object);
+    }
 }
