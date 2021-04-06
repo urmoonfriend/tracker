@@ -28,4 +28,32 @@ public class StartUITest {
                 )
         );
     }
+
+    @Test
+    public void whenAddItemTestOutput() {
+        Output out = new StubOutput();
+        String name = "Item name";
+        Input in = new StubInput(
+                new String[] {"0", name, "1"}
+        );
+        Tracker tracker = new Tracker();
+        UserAction[] actions = new UserAction[]{
+                new CreateAction(out),
+                new ExitAction(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        Item item = tracker.findByName(name)[0];
+        String ln = System.lineSeparator();
+        assertThat(out.toString(), is(
+                "Menu:" + ln
+                        + "0. Add new Item" + ln
+                        + "1. Exit Program" + ln
+                        + "=== Create a new Item ===" + ln
+                        + "Добавленная заявка: " + item + ln
+                        + "Menu:" + ln
+                        + "0. Add new Item" + ln
+                        + "1. Exit Program" + ln
+                        + "=== Exit Program ===" + ln
+        ));
+    }
 }
