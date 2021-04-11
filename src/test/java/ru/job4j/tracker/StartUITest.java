@@ -146,7 +146,7 @@ public class StartUITest {
     public void whenReplaceItemTestOutputIsError() {
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
-        Item one = tracker.add(new Item("test1"));
+        tracker.add(new Item("test1"));
         String replaceName = "New Test Name";
         Input in = new StubInput(
                 new String[] {"0", "10", replaceName, "1"}
@@ -165,6 +165,60 @@ public class StartUITest {
                         + "Ошибка замены заявки." + ln
                         + "Menu:" + ln
                         + "0. Edit item" + ln
+                        + "1. Exit Program" + ln
+                        + "=== Exit Program ===" + ln
+        ));
+    }
+
+    @Test
+    public void whenDeleteItemTestOutputIsSuccessfully() {
+        Output out = new StubOutput();
+        Tracker tracker = new Tracker();
+        Item one = tracker.add(new Item("test1"));
+        Input in = new StubInput(
+                new String[] {"0", String.valueOf(one.getId()), "1"}
+        );
+        UserAction[] actions = new UserAction[]{
+                new DeleteAction(out),
+                new ExitAction(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        String ln = System.lineSeparator();
+        assertThat(out.toString(), is(
+                "Menu:" + ln
+                        + "0. Delete item" + ln
+                        + "1. Exit Program" + ln
+                        + "=== Delete item ===" + ln
+                        + "Заявка удалена успешно." + ln
+                        + "Menu:" + ln
+                        + "0. Delete item" + ln
+                        + "1. Exit Program" + ln
+                        + "=== Exit Program ===" + ln
+        ));
+    }
+
+    @Test
+    public void whenDeleteItemTestOutputIsError() {
+        Output out = new StubOutput();
+        Tracker tracker = new Tracker();
+        tracker.add(new Item("test1"));
+        Input in = new StubInput(
+                new String[] {"0", "1000", "1"}
+        );
+        UserAction[] actions = new UserAction[]{
+                new DeleteAction(out),
+                new ExitAction(out)
+        };
+        new StartUI(out).init(in, tracker, actions);
+        String ln = System.lineSeparator();
+        assertThat(out.toString(), is(
+                "Menu:" + ln
+                        + "0. Delete item" + ln
+                        + "1. Exit Program" + ln
+                        + "=== Delete item ===" + ln
+                        + "Ошибка удаления заявки." + ln
+                        + "Menu:" + ln
+                        + "0. Delete item" + ln
                         + "1. Exit Program" + ln
                         + "=== Exit Program ===" + ln
         ));
