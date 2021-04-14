@@ -230,7 +230,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item one = tracker.add(new Item("test1"));
         Input in = new StubInput(
-                new String[] {"0", String.valueOf(one.getId()),"1"}
+                new String[] {"0", String.valueOf(one.getId()), "1"}
         );
         UserAction[] actions = new UserAction[]{
                 new ShowByIdAction(out),
@@ -258,7 +258,7 @@ public class StartUITest {
         tracker.add(new Item("test1"));
         String id = "1000";
         Input in = new StubInput(
-                new String[] {"0", id,"1"}
+                new String[] {"0", id, "1"}
         );
         UserAction[] actions = new UserAction[]{
                 new ShowByIdAction(out),
