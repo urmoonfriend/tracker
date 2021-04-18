@@ -13,3 +13,7 @@ notifications:
       - stas.korobeinikov@mail.ru
     on_success: never # default: change
     on_failure: always # default: always
+
+env:
+  global:
+    - CODECOV_TOKEN='abc34d4e-2ceb-4db8-b92f-c4ba53dab9c2'
