@@ -7,6 +7,7 @@ import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.*;
 
 public class TrackerTest {
+    /*
     @Test
     public void whenFindAll() {
         Tracker tracker = new Tracker();
@@ -44,4 +45,5 @@ public class TrackerTest {
         tracker.delete(id);
         assertThat(tracker.findById(id), is(nullValue()));
     }
+    */
 }

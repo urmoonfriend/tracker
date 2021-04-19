@@ -6,6 +6,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class StartUITest {
+    /*
     @Test
     public void whenInvalidExit() {
         Output out = new StubOutput();
@@ -338,4 +339,5 @@ public class StartUITest {
                         + "=== Exit Program ===" + ln
         ));
     }
+    */
 }
