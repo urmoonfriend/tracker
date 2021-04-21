@@ -7,13 +7,12 @@ import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.*;
 
 public class TrackerTest {
-    /*
     @Test
     public void whenFindAll() {
         Tracker tracker = new Tracker();
         Item bug = new Item("Bug");
         tracker.add(bug);
-        assertThat(tracker.findAll()[0].getName(), is(bug.getName()));
+        assertThat(tracker.findAll().get(0).getName(), is(bug.getName()));
     }
 
     @Test
@@ -22,7 +21,7 @@ public class TrackerTest {
         tracker.add(new Item("bug"));
         tracker.add(new Item("name"));
         Item item = tracker.add(new Item("first"));
-        assertThat(tracker.findByName("first")[0].getId(), is(item.getId()));
+        assertThat(tracker.findByName("first").get(0).getId(), is(item.getId()));
     }
 
     @Test
@@ -45,5 +44,4 @@ public class TrackerTest {
         tracker.delete(id);
         assertThat(tracker.findById(id), is(nullValue()));
     }
-    */
 }
