@@ -95,7 +95,7 @@ public class StartUITest {
     public void whenShowAllItemsTestOutputWithEmptyTracker() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[] {"0", "1"}
+                new String[] {"0", "1" }
         );
         Tracker tracker = new Tracker();
         List<UserAction> actions = List.of(
