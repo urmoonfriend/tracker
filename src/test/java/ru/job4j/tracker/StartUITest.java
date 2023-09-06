@@ -220,10 +220,10 @@ public class StartUITest {
                         + "1. Exit Program" + ln
                         + "=== Delete item ===" + ln
                         + "Ошибка удаления заявки." + ln
-                        + "Menu:" + ln
+/*                        + "Menu:" + ln
                         + "0. Delete item" + ln
                         + "1. Exit Program" + ln
-                        + "=== Exit Program ===" + ln
+                        + "=== Exit Program ===" + ln*/
         ));
     }
 
@@ -275,10 +275,10 @@ public class StartUITest {
                         + "1. Exit Program" + ln
                         + "=== Find item by id ===" + ln
                         + "Заявка с введенным id: " + id + " не найдена." + ln
-                        + "Menu:" + ln
+/*                        + "Menu:" + ln
                         + "0. Find item by id" + ln
                         + "1. Exit Program" + ln
-                        + "=== Exit Program ===" + ln
+                        + "=== Exit Program ===" + ln*/
         ));
     }
 
@@ -335,10 +335,10 @@ public class StartUITest {
                         + "1. Exit Program" + ln
                         + "=== Find items by name ===" + ln
                         + "Заявки с именем: " + name + " не найдены." + ln
-                        + "Menu:" + ln
+/*                        + "Menu:" + ln
                         + "0. Find items by name" + ln
                         + "1. Exit Program" + ln
-                        + "=== Exit Program ===" + ln
+                        + "=== Exit Program ===" + ln*/
         ));
     }
 }

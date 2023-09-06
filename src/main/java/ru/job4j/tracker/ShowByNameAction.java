@@ -17,6 +17,7 @@ public class ShowByNameAction implements UserAction {
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
+        boolean result = false;
         out.println("=== Find items by name ===");
         String name = input.askStr("Enter name: ");
         List<Item> items = tracker.findByName(name);
@@ -24,9 +25,10 @@ public class ShowByNameAction implements UserAction {
             for (Item item : items) {
                 out.println(item);
             }
+            result = true;
         } else {
             out.println("Заявки с именем: " + name + " не найдены.");
         }
-        return true;
+        return result;
     }
 }

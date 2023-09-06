@@ -15,14 +15,16 @@ public class ShowByIdAction implements UserAction {
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
+        boolean result = false;
         out.println("=== Find item by id ===");
         int id = input.askInt("Enter id: ");
         Item item = tracker.findById(id);
         if (item != null) {
             out.println(item);
+            result = true;
         } else {
             out.println("Заявка с введенным id: " + id + " не найдена.");
         }
-        return true;
+        return result;
     }
 }
