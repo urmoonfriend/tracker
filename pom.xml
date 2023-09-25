@@ -20,7 +20,7 @@
                 <liquibase.config>db/liquibase_test.properties</liquibase.config>
             </properties>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
         <profile>
@@ -29,7 +29,7 @@
                 <liquibase.config>db/liquibase.properties</liquibase.config>
             </properties>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
         </profile>
     </profiles>
