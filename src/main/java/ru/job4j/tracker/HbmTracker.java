@@ -6,6 +6,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HbmTracker implements Store, AutoCloseable {
@@ -25,6 +26,8 @@ public class HbmTracker implements Store, AutoCloseable {
             itemToReturn = item;
         } catch (Exception e) {
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
         return itemToReturn;
     }
@@ -41,6 +44,8 @@ public class HbmTracker implements Store, AutoCloseable {
             result = true;
         } catch (Exception e) {
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
         return result;
     }
@@ -54,38 +59,58 @@ public class HbmTracker implements Store, AutoCloseable {
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
     }
 
     @Override
     public List<Item> findAll() {
         Session session = sf.openSession();
-        session.beginTransaction();
-        List<Item> result = session.createQuery("from Item", Item.class).list();
-        session.getTransaction().commit();
-        session.close();
+        List<Item> result = new ArrayList<>();
+        try {
+            session.beginTransaction();
+            result = session.createQuery("from Item", Item.class).list();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
         return result;
     }
 
     @Override
     public List<Item> findByName(String key) {
         Session session = sf.openSession();
-        session.beginTransaction();
-        List<Item> result = session.createQuery("from Item WHERE name = :fName", Item.class)
-                .setParameter("fName", key).list();
-        session.getTransaction().commit();
-        session.close();
+        List<Item> result = new ArrayList<>();
+        try {
+            session.beginTransaction();
+            result = session.createQuery("from Item WHERE name = :fName", Item.class)
+                    .setParameter("fName", key).list();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
         return result;
     }
 
     @Override
     public Item findById(Integer id) {
         Session session = sf.openSession();
-        session.beginTransaction();
-        Item result = session.createQuery("from Item WHERE id = :fId", Item.class)
-                .setParameter("fId", id).uniqueResult();
-        session.getTransaction().commit();
-        session.close();
+        Item result = null;
+        try {
+            session.beginTransaction();
+            result = session.createQuery("from Item WHERE id = :fId", Item.class)
+                    .setParameter("fId", id).uniqueResult();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
         return result;
     }
 
