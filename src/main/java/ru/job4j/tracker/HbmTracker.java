@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import ru.job4j.tracker.models.Item;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,17 +52,20 @@ public class HbmTracker implements Store, AutoCloseable {
     }
 
     @Override
-    public void delete(Integer id) {
+    public boolean delete(Integer id) {
         Session session = sf.openSession();
+        boolean result = false;
         try {
             session.beginTransaction();
             session.createQuery("DELETE Item WHERE id = :fId").setParameter("fId", id).executeUpdate();
             session.getTransaction().commit();
+            result = true;
         } catch (Exception e) {
             session.getTransaction().rollback();
         } finally {
             session.close();
         }
+        return result;
     }
 
     @Override
@@ -118,4 +122,5 @@ public class HbmTracker implements Store, AutoCloseable {
     public void close() {
         StandardServiceRegistryBuilder.destroy(registry);
     }
+
 }

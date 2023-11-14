@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import ru.job4j.tracker.models.Item;
+
 import java.util.List;
 
 public interface Store {
@@ -7,7 +9,7 @@ public interface Store {
 
     boolean replace(Integer id, Item item);
 
-    void delete(Integer id);
+    boolean delete(Integer id);
 
     List<Item> findAll();
 
