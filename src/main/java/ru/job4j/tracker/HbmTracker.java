@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -10,6 +11,7 @@ import ru.job4j.tracker.models.Item;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 public class HbmTracker implements Store, AutoCloseable {
     private final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
             .configure().build();
@@ -25,6 +27,7 @@ public class HbmTracker implements Store, AutoCloseable {
             session.save(item);
             session.getTransaction().commit();
             itemToReturn = item;
+            log.info("itemToSave: {}", itemToReturn);
         } catch (Exception e) {
             session.getTransaction().rollback();
         } finally {
