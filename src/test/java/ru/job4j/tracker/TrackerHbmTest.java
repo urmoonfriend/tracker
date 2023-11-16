@@ -27,7 +27,7 @@ public class TrackerHbmTest {
         try (var tracker = new HbmTracker()) {
             Item item = new Item();
             item.setName("test1");
-            tracker.add(item);
+            item = tracker.add(item);
             Item result = tracker.findById(item.getId());
             assertThat(result.getName()).isEqualTo(item.getName());
         }
@@ -40,7 +40,7 @@ public class TrackerHbmTest {
             item.setName("test1");
             tracker.add(item);
             Item item2 = new Item();
-            item.setName("test2");
+            item2.setName("test2");
             tracker.replace(item.getId(), item2);
             Item result = tracker.findById(item.getId());
             assertThat(result.getName()).isEqualTo(item2.getName());
