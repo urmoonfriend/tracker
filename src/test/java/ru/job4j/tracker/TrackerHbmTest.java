@@ -51,7 +51,7 @@ public class TrackerHbmTest {
     public void whenFindAllItemThenSuccess() throws Exception {
         try (var tracker = new HbmTracker()) {
             Item item = new Item();
-            item.setName("test1");
+            item.setName("test112");
             tracker.add(item);
             List<Item> result = tracker.findAll();
             assertThat(result.size()).isEqualTo(1);
@@ -63,7 +63,7 @@ public class TrackerHbmTest {
         try (var tracker = new HbmTracker()) {
             Item item = new Item();
             item.setName("test1");
-            tracker.add(item);
+            item = tracker.add(item);
             boolean result = tracker.delete(item.getId());
             assertThat(result).isEqualTo(true);
         }
