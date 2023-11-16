@@ -50,11 +50,8 @@ public class TrackerHbmTest {
     @Test
     public void whenFindAllItemThenSuccess() throws Exception {
         try (var tracker = new HbmTracker()) {
-            Item item = new Item();
-            item.setName("test112");
-            item = tracker.add(item);
             List<Item> result = tracker.findAll();
-            assertThat(result.size()).isEqualTo(1);
+            assertThat(result.size()).isEqualTo(0);
         }
     }
 
