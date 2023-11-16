@@ -52,7 +52,7 @@ public class TrackerHbmTest {
         try (var tracker = new HbmTracker()) {
             Item item = new Item();
             item.setName("test112");
-            tracker.add(item);
+            item = tracker.add(item);
             List<Item> result = tracker.findAll();
             assertThat(result.size()).isEqualTo(1);
         }
