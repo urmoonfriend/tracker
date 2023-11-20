@@ -23,7 +23,7 @@ public class Item {
     private String name;
     private final LocalDateTime created = LocalDateTime.now();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "participates",
             joinColumns = {@JoinColumn(name = "item_id")},

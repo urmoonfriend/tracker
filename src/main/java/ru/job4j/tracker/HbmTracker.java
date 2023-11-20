@@ -77,7 +77,7 @@ public class HbmTracker implements Store, AutoCloseable {
         List<Item> result = new ArrayList<>();
         try {
             session.beginTransaction();
-            result = session.createQuery("from Item", Item.class).list();
+            result = session.createQuery("from Item i JOIN FETCH i.participates ", Item.class).list();
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
@@ -93,7 +93,8 @@ public class HbmTracker implements Store, AutoCloseable {
         List<Item> result = new ArrayList<>();
         try {
             session.beginTransaction();
-            result = session.createQuery("from Item WHERE name = :fName", Item.class)
+            result = session.createQuery("from Item i JOIN FETCH i.participates " +
+                            "WHERE i.name = :fName", Item.class)
                     .setParameter("fName", key).list();
             session.getTransaction().commit();
         } catch (Exception e) {
@@ -110,7 +111,8 @@ public class HbmTracker implements Store, AutoCloseable {
         Item result = null;
         try {
             session.beginTransaction();
-            result = session.createQuery("from Item WHERE id = :fId", Item.class)
+            result = session.createQuery("from Item i JOIN FETCH i.participates " +
+                            "WHERE i.id = :fId", Item.class)
                     .setParameter("fId", id).uniqueResult();
             session.getTransaction().commit();
         } catch (Exception e) {
