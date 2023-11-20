@@ -13,12 +13,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class TrackerHbmTest {
 
     @BeforeEach
-    @AfterEach
     public void clear() throws Exception {
         try (var tracker = new HbmTracker()) {
             for (Item item : tracker.findAll()) {
                 tracker.delete(item.getId());
             }
+        }
+    }
+
+    @Test
+    public void whenFindByIdThenFound() throws Exception {
+        try (var tracker = new HbmTracker()) {
+            Item item = new Item();
+            item.setName("test1");
+            tracker.add(item);
+            Item result = tracker.findById(item.getId());
+            assertThat(result).isEqualTo(item);
         }
     }
 
