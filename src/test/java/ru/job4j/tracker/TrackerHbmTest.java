@@ -26,9 +26,8 @@ public class TrackerHbmTest {
     public void whenAddNewItemThenTrackerHasSameItem() throws Exception {
         try (var tracker = new HbmTracker()) {
             Item item = new Item();
-            item.setId(123);
             item.setName("test1");
-            item = tracker.add(item);
+            tracker.add(item);
             Item result = tracker.findById(item.getId());
             assertThat(result.getName()).isEqualTo(item.getName());
         }
