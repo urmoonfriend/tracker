@@ -22,7 +22,7 @@ public class TrackerHbmTest {
         }
     }
 
-    /*@Test
+    @Test
     public void whenAddNewItemThenTrackerHasSameItem() throws Exception {
         try (var tracker = new HbmTracker()) {
             Item item = new Item();
@@ -31,9 +31,9 @@ public class TrackerHbmTest {
             Item result = tracker.findById(item.getId());
             assertThat(result.getName()).isEqualTo(item.getName());
         }
-    }*/
+    }
 
-    /*@Test
+    @Test
     public void whenReplaceItemThenSuccess() throws Exception {
         try (var tracker = new HbmTracker()) {
             Item item = new Item();
@@ -46,7 +46,7 @@ public class TrackerHbmTest {
             Item result = tracker.findById(item.getId());
             assertThat(result.getName()).isEqualTo(item2.getName());
         }
-    }*/
+    }
 
     @Test
     public void whenFindAllItemThenSuccess() throws Exception {
@@ -56,7 +56,7 @@ public class TrackerHbmTest {
         }
     }
 
-    /*@Test
+    @Test
     public void whenDeleteItemThenSuccess() throws Exception {
         try (var tracker = new HbmTracker()) {
             Item item = new Item();
@@ -66,7 +66,7 @@ public class TrackerHbmTest {
             boolean result = tracker.delete(item.getId());
             assertThat(result).isEqualTo(true);
         }
-    }*/
+    }
 
     @Test
     public void whenFindByNameItemThenSuccess() throws Exception {

@@ -6,12 +6,12 @@ import java.time.LocalDateTime;
 
 public class Main {
     public static void main(String[] args) {
+        HbmTracker hbmTracker = new HbmTracker();
         Item item = new Item();
         item.setName("item_" + LocalDateTime.now().toString());
-        HbmTracker hbmTracker = new HbmTracker();
         hbmTracker.add(item);
         System.out.printf("added item: {%s}\n", item.toString());
-        var findItem = hbmTracker.findById(item.getId());
+        Item findItem = hbmTracker.findById(item.getId());
         System.out.printf("found Item: {%s}\n", findItem.toString());
     }
 }
