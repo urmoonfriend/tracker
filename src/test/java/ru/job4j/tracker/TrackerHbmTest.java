@@ -26,6 +26,7 @@ public class TrackerHbmTest {
     public void whenAddNewItemThenTrackerHasSameItem() throws Exception {
         try (var tracker = new HbmTracker()) {
             Item item = new Item();
+            item.setId(123);
             item.setName("test1");
             item = tracker.add(item);
             Item result = tracker.findById(item.getId());
@@ -37,9 +38,11 @@ public class TrackerHbmTest {
     public void whenReplaceItemThenSuccess() throws Exception {
         try (var tracker = new HbmTracker()) {
             Item item = new Item();
+            item.setId(124);
             item.setName("test1");
             tracker.add(item);
             Item item2 = new Item();
+            item2.setId(125);
             item2.setName("test2");
             tracker.replace(item.getId(), item2);
             Item result = tracker.findById(item.getId());
@@ -59,6 +62,7 @@ public class TrackerHbmTest {
     public void whenDeleteItemThenSuccess() throws Exception {
         try (var tracker = new HbmTracker()) {
             Item item = new Item();
+            item.setId(126);
             item.setName("test1");
             item = tracker.add(item);
             boolean result = tracker.delete(item.getId());
